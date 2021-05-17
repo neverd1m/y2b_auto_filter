@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %} Фильтры {{request.user}} {% endblock title %}
+{% block content %}
+{% for filter in filters %}
+<p>{{filter.name}}</p>
+<p>{{filter.author}}</p>
+<p>{{filter.text_request}}</p>
+<p><a href="{{filter.get_absolute_url}}">Открыть страницу фильтра</a></p>
+{% empty %}
+<p>Здесь пока нет никаких фильтров</p>
+{% endfor %}
+
+<form action='{% url "filter_create" %}'>
+    <button action=" submit">Создать фильтр</button>
+</form>
+
+
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block title %}{{filter.name}}{% endblock title %}
+
+{% block content %}
+<p>{{filter.name}}</p>
+<p>{{filter.created_at}}</p>
+<p>{{filter.author}}</p>
+<p>{{filter.text_request}}</p>
+{% endblock content %}
