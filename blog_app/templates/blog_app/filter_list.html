@@ -3,17 +3,20 @@
 {% block title %} Фильтры {{request.user}} {% endblock title %}
 {% block content %}
 {% for filter in filters %}
-<p>{{filter.name}}</p>
+{% include 'blog_app/filter_card.html' %}
+{% comment %} <p>{{filter.name}}</p>
 <p>{{filter.author}}</p>
 <p>{{filter.text_request}}</p>
-<p><a href="{{filter.get_absolute_url}}">Открыть страницу фильтра</a></p>
+<p><a href="{{filter.get_absolute_url}}">Открыть страницу фильтра</a></p> {% endcomment %}
 {% empty %}
 <p>Здесь пока нет никаких фильтров</p>
 {% endfor %}
 
-<form action='{% url "filter_create" %}'>
-    <button action=" submit">Создать фильтр</button>
-</form>
+<div class="container-fluid mb-5">
+    <form action='{% url "filter_create" %}'>
+        <button class="btn btn-info">Создать блог</button>
+    </form>
+</div>
 
 
 {% endblock content %}

@@ -18,9 +18,13 @@ from . import views
 
 
 urlpatterns = [
+    path('filters/subscribed/', views.MySubsListView.as_view(),
+         name='filter_subscribed'),
     path('filters/create/', views.FilterCreateView.as_view(),
          name='filter_create'),
     path('filters', views.FilterListView.as_view(), name='filter_list'),
     path('filters/<slug:slug>/',
-         views.FilterDetailView.as_view(), name='filter_detail')
+         views.FilterDetailView.as_view(), name='filter_detail'),
+    path('filters/<slug:slug>/subscribe/',
+         views.FilterSubscribeToView.as_view(), name='subscribe_to'),
 ]

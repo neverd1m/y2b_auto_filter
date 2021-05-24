@@ -1,0 +1,16 @@
+<div class="card mb-3">
+    <div class="card-header">
+        {{filter.created_at.date}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{filter.name}}, Автор: {{filter.author}}</h5>
+        <p class="card-text">{{filter.text_request}}</p>
+        <p class="card-text">Количество подписчиков: {{filter.subscibers.count}}</p>
+        <form action="{% url 'subscribe_to' slug=filter.slug %}" method="post">
+            {% csrf_token %}
+            <a href="{{filter.get_absolute_url}}" class="btn btn-secondary">Открыть фильтр</a>
+            <button class="submit btn btn-outline-primary">Подписаться</button>
+        </form>
+
+    </div>
+</div>

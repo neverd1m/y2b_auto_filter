@@ -76,10 +76,21 @@ WSGI_APPLICATION = 'you_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'y2b_blog_db',
+        'USER': 'neverd1m',
+        'PASSWORD': 'neverd1m',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
@@ -127,6 +138,14 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+# Authorization parameters
 LOGIN_REDIRECT_URL = 'filters'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
+
+
+# Celery config parameters
+# CELERY_BROKER_URL = 'amqp://localhost'
+CELERY_RESULT_BACKEND = 'djcelery.backends.database:DatabaseBackend',
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'

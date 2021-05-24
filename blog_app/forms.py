@@ -15,12 +15,12 @@ class FilterForm(forms.ModelForm):
     class Meta:
         model = Filter
         fields = ('name', 'author', 'text_request',
-                  'published_after', 'category', 'subscribers')
+                  'time_interval', 'category', 'subscribers')
         # скрываю поля из формы, которые косвенно зависят от ввода.
         widgets = {'category': forms.HiddenInput(),
                    'author': forms.HiddenInput(),
                    'subscribers': forms.HiddenInput(),
-                   'published_after': forms.HiddenInput()
+                   'time_interval': forms.HiddenInput()
                    }
 
 
@@ -34,7 +34,7 @@ class VideoForm(forms.ModelForm):
 class VideoCategoriesForm(forms.Form):
 
     publish_filter = forms.ChoiceField(label='Интервал поиска', choices=[
-                                       (1, 'За 5 минут'), (2, 'За день'), (3, 'За неделю')])
+        (1, 'За сутки'), (2, 'За неделю'), (3, 'За месяц'), (4, 'За 5 минут')])
 
     # создание поля с динамически изменяемым параметром choices
     def __init__(self, *args, **kwargs):
